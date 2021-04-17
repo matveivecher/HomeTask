@@ -109,9 +109,19 @@ public class Task1 {
     }
 
     public static void addRandomPersonInList(List people) {
+        String str = null;
+        String[] array = null;
+        int age = 0;
         for (int i = 1; i <= 100; i++) {
+            str = randomDateOfBirth();
+            array = str.split("\\.");
+            if (Integer.parseInt(array[0]) <= 17 && Integer.parseInt(array[1]) <= 4) {
+                age = 2021 - Integer.parseInt(array[2]);
+            } else {
+                age = 2020 - Integer.parseInt(array[2]);
+            }
             LocalDate launchDay = LocalDate.of(2021, Month.APRIL, (int) (Math.random() * 14 + 13));
-            people.add(new Person(i, names[(int) (Math.random() * names.length)], surnames[(int) (Math.random() * surnames.length)], (int) (Math.random() * 16 + 16), (int) (Math.random() * 600 + 600), randomPassport(), (address[(int) (Math.random() * address.length)] + "," + String.valueOf((int) (Math.random() * 101))), randomDateOfBirth(), new Date(System.currentTimeMillis()), launchDay));
+            people.add(new Person(i, names[(int) (Math.random() * names.length)], surnames[(int) (Math.random() * surnames.length)], age, (int) (Math.random() * 600 + 600), randomPassport(), (address[(int) (Math.random() * address.length)] + "," + String.valueOf((int) (Math.random() * 101))), str, new Date(System.currentTimeMillis()), launchDay));
         }
     }
 }
