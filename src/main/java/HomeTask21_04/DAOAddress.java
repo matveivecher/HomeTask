@@ -6,12 +6,12 @@ public class DAOAddress implements DAO<Address>{
     Connection connection=null;
     String userName="Matvei";
     String password="1234";
-    String connectionURL="jdbc:mysql://localhost:3306/task17_04_21";
+    String connectionURL="jdbc:mysql://localhost:3306/03_05";
     PreparedStatement preparedStatement=null;
     Statement statement=null;
     @Override
     public Address save(Address address) throws SQLException, ClassNotFoundException {
-         String sql="INSERT INTO address(id,street,house)"+" VALUES(?,?,?)";
+         String sql="INSERT INTO 03_05.address(id,street,house)"+" VALUES(?,?,?)";
          connection= DriverManager.getConnection(connectionURL,userName,password);
          preparedStatement=connection.prepareStatement(sql);
          preparedStatement.setInt(1,address.getId());
@@ -24,7 +24,7 @@ public class DAOAddress implements DAO<Address>{
 
     @Override
     public Address  get(int id) throws SQLException, ClassNotFoundException {
-        String sql="SELECT *FROM address where id = "+id;
+        String sql="SELECT *FROM 03_05.address where id = "+id;
         connection=DriverManager.getConnection(connectionURL,userName,password);
         statement=connection.createStatement();
         ResultSet resultSet=statement.executeQuery(sql);
@@ -38,7 +38,7 @@ public class DAOAddress implements DAO<Address>{
 
     @Override
     public void update(Address address, int id) throws SQLException {
-       String sql="UPDATE address SET id=(?),street=(?),house=(?) where id = "+id;
+       String sql="UPDATE 03_05.address SET id=(?),street=(?),house=(?) where id = "+id   ;
        connection=DriverManager.getConnection(connectionURL,userName,password);
        preparedStatement=connection.prepareStatement(sql);
        preparedStatement.setInt(1,address.getId());
@@ -50,7 +50,7 @@ public class DAOAddress implements DAO<Address>{
 
     @Override
     public int delete(int id) throws SQLException {
-        String sql="DELETE from address where id = "+id;
+        String sql="DELETE from 03_05.address where id = "+id;
         connection=DriverManager.getConnection(connectionURL,userName,password);
         statement= connection.createStatement();
         statement.executeUpdate(sql);

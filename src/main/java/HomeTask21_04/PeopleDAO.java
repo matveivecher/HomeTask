@@ -6,7 +6,7 @@ import java.sql.*;
 public class PeopleDAO implements DAO<Man> {
     String userName = "Matvei";
     String password = "1234";
-    String connectionUrl = "jdbc:mysql://localhost:3306/task17_04_21";
+    String connectionUrl = "jdbc:mysql://localhost:3306/03_05";
     PreparedStatement preparedStatement;
     Connection connection = null;
 
@@ -20,7 +20,7 @@ public class PeopleDAO implements DAO<Man> {
         } finally {
             if (connection == null) connection.close();
         }
-        String sql = "INSERT INTO people(id,name,surname,age) " + "VALUES(?,?,?,?)";
+        String sql = "INSERT INTO 03_05.people(id,name,surname,age) " + "VALUES(?,?,?,?)";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, man.getId());
         preparedStatement.setString(2, man.getName());
@@ -40,7 +40,7 @@ public class PeopleDAO implements DAO<Man> {
         } finally {
             if (connection == null) connection.close();
         }
-        String sql = "select *from people where id = " + id;
+        String sql = "select *from 03_05.people where id = " + id;
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
         Man man = null;
@@ -52,7 +52,7 @@ public class PeopleDAO implements DAO<Man> {
 
     @Override
     public void update(Man man, int id) throws SQLException {
-        String sql = "UPDATE people SET id=(?),name=(?),surname=(?),age=(?) where id = " + id;
+        String sql = "UPDATE 03_05.people SET id=(?),name=(?),surname=(?),age=(?) where id = " + id;
         connection = DriverManager.getConnection(connectionUrl, userName, password);
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, man.getId());
@@ -64,7 +64,7 @@ public class PeopleDAO implements DAO<Man> {
 
     @Override
     public int delete(int id) throws SQLException {
-        String sql = "DELETE FROM people where id = "+id;
+        String sql = "DELETE FROM 03_05.people where id = "+id;
         connection=DriverManager.getConnection(connectionUrl,userName,password);
         Statement statement=connection.createStatement();
         statement.executeUpdate(sql);
