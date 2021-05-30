@@ -5,6 +5,9 @@
     <persistence-unit name="main.java" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>pojos.Person</class>
+        <class>Hierarchy.Task</class>
+        <class>Hierarchy.HomeTask</class>
+        <class>Hierarchy.WorkTask</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.password" value = "1234" />
