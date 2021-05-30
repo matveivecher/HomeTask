@@ -14,7 +14,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "WorkTask")
-@PrimaryKeyJoinColumn(name = "id")
 public class WorkTask extends Task implements Serializable {
     private static final long serialVersion=3L;
     public int cost;

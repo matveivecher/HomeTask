@@ -17,7 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "HomeTask")
-@PrimaryKeyJoinColumn(name = "id")
 public class HomeTask extends Task implements Serializable {
     private static final long serialVersion=4L;
     public java.sql.Date startDate;
