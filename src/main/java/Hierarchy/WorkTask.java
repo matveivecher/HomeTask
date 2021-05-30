@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -16,7 +13,8 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@DiscriminatorValue("W")
+@Table(name = "WorkTask")
+@PrimaryKeyJoinColumn(name = "id")
 public class WorkTask extends Task implements Serializable {
     private static final long serialVersion=3L;
     public int cost;

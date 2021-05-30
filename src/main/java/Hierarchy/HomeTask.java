@@ -11,14 +11,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-
 @Data
 @Entity
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@DiscriminatorValue("H")
+@Table(name = "HomeTask")
+@PrimaryKeyJoinColumn(name = "id")
 public class HomeTask extends Task implements Serializable {
     private static final long serialVersion=4L;
     public java.sql.Date startDate;
@@ -28,3 +27,5 @@ public class HomeTask extends Task implements Serializable {
     @OneToMany (cascade = CascadeType.PERSIST)
     public List<WorkTask> tasks=new ArrayList<>();
 }
+
+
